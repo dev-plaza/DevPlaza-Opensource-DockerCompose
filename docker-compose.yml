@@ -2,9 +2,9 @@ version: "3.8"
 
 services:
 
-  # Authentication Management Service
   auth-mgmt:
-    build: ../DevPlazaBackEnd/auth-mgmt
+    image: Sarathroy1502/auth-mgmt:latest
+    # build: ../DevPlazaBackEnd/auth-mgmt
     container_name: auth-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=auth_mgmt_db
@@ -13,9 +13,9 @@ services:
     networks:
       - devplaza-network
 
-  # Product Management Service
   product-mgmt:
-    build: ../DevPlazaBackEnd/product-mgmt
+    image: Sarathroy1502/product-mgmt:latest
+    # build: ../DevPlazaBackEnd/product-mgmt
     container_name: product-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=product_mgmt_db
@@ -24,9 +24,9 @@ services:
     networks:
       - devplaza-network
 
-  # Tenant Management Service
   tenant-mgmt:
-    build: ../DevPlazaBackEnd/tenant-mgmt
+    image: Sarathroy1502/tenant-mgmt:latest
+    # build: ../DevPlazaBackEnd/tenant-mgmt
     container_name: tenant-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=tenant_mgmt_db
@@ -35,9 +35,9 @@ services:
     networks:
       - devplaza-network
 
-  # User Management Service
   user-mgmt:
-    build: ../DevPlazaBackEnd/user-mgmt
+    image: Sarathroy1502/user-mgmt:latest
+    # build: ../DevPlazaBackEnd/user-mgmt
     container_name: user-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=user_mgmt_db
@@ -46,9 +46,9 @@ services:
     networks:
       - devplaza-network
 
-  # Frontend Service
   frontend:
-    build: ../DevPlazaFrontEnd/DevPlazaCustomer
+    image: Sarathroy1502/devplaza-customer:latest
+    # build: ../DevPlazaFrontEnd/DevPlazaCustomer
     container_name: devplaza-customer
     ports:
       - "5173:5173"
@@ -60,7 +60,6 @@ services:
     networks:
       - devplaza-network
 
-# Network Configuration
 networks:
   devplaza-network:
     driver: bridge
