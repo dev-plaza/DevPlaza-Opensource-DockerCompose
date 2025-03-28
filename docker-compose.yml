@@ -6,7 +6,7 @@ services:
     image: devplazaadmin/auth-mgmt:latest
     container_name: auth-mgmt
     environment:
-      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=auth_mgmt_db
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?schema=auth_mgmt_db
     ports:
       - "3000:3000"
     networks:
@@ -16,7 +16,7 @@ services:
     image: devplazaadmin/product-mgmt:latest
     container_name: product-mgmt
     environment:
-      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=product_mgmt_db
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?schema=product_mgmt_db
     ports:
       - "3004:3004"
     networks:
@@ -26,7 +26,7 @@ services:
     image: devplazaadmin/tenant-mgmt:latest
     container_name: tenant-mgmt
     environment:
-      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=tenant_mgmt_db
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?schema=tenant_mgmt_db
     ports:
       - "3001:3001"
     networks:
@@ -36,7 +36,7 @@ services:
     image: devplazaadmin/user-mgmt:latest
     container_name: user-mgmt
     environment:
-      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=user_mgmt_db
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?schema=user_mgmt_db
     ports:
       - "3002:3002"
     networks:
