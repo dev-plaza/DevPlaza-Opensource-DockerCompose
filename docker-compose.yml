@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+
+  # Authentication Management Service
+  auth-mgmt:
+    build: ../DevPlazaBackEnd/auth-mgmt
+    container_name: auth-mgmt
+    environment:
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=auth_mgmt_db
+    ports:
+      - "3000:3000"
+    networks:
+      - devplaza-network
+
+  # Product Management Service
+  product-mgmt:
+    build: ../DevPlazaBackEnd/product-mgmt
+    container_name: product-mgmt
+    environment:
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=product_mgmt_db
+    ports:
+      - "3004:3004"
+    networks:
+      - devplaza-network
+
+  # Tenant Management Service
+  tenant-mgmt:
+    build: ../DevPlazaBackEnd/tenant-mgmt
+    container_name: tenant-mgmt
+    environment:
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=tenant_mgmt_db
+    ports:
+      - "3001:3001"
+    networks:
+      - devplaza-network
+
+  # User Management Service
+  user-mgmt:
+    build: ../DevPlazaBackEnd/user-mgmt
+    container_name: user-mgmt
+    environment:
+      - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=user_mgmt_db
+    ports:
+      - "3002:3002"
+    networks:
+      - devplaza-network
+
+  # Frontend Service
+  frontend:
+    build: ../DevPlazaFrontEnd/DevPlazaCustomer
+    container_name: devplaza-customer
+    ports:
+      - "5173:5173"
+    depends_on:
+      - auth-mgmt
+      - user-mgmt
+      - tenant-mgmt
+      - product-mgmt
+    networks:
+      - devplaza-network
+
+# Network Configuration
+networks:
+  devplaza-network:
+    driver: bridge
