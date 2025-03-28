@@ -4,7 +4,6 @@ services:
 
   auth-mgmt:
     image: Sarathroy1502/auth-mgmt:latest
-    # build: ../DevPlazaBackEnd/auth-mgmt
     container_name: auth-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=auth_mgmt_db
@@ -15,7 +14,6 @@ services:
 
   product-mgmt:
     image: Sarathroy1502/product-mgmt:latest
-    # build: ../DevPlazaBackEnd/product-mgmt
     container_name: product-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=product_mgmt_db
@@ -26,7 +24,6 @@ services:
 
   tenant-mgmt:
     image: Sarathroy1502/tenant-mgmt:latest
-    # build: ../DevPlazaBackEnd/tenant-mgmt
     container_name: tenant-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=tenant_mgmt_db
@@ -37,7 +34,6 @@ services:
 
   user-mgmt:
     image: Sarathroy1502/user-mgmt:latest
-    # build: ../DevPlazaBackEnd/user-mgmt
     container_name: user-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=user_mgmt_db
@@ -48,7 +44,6 @@ services:
 
   frontend:
     image: Sarathroy1502/devplaza-customer:latest
-    # build: ../DevPlazaFrontEnd/DevPlazaCustomer
     container_name: devplaza-customer
     ports:
       - "5173:5173"
