@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   auth-mgmt:
-    image: sarathroy1502/auth-mgmt:latest
+    image: devplazaadmin/auth-mgmt:latest
     container_name: auth-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=auth_mgmt_db
@@ -13,7 +13,7 @@ services:
       - devplaza-network
 
   product-mgmt:
-    image: sarathroy1502/product-mgmt:latest
+    image: devplazaadmin/product-mgmt:latest
     container_name: product-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=product_mgmt_db
@@ -23,7 +23,7 @@ services:
       - devplaza-network
 
   tenant-mgmt:
-    image: sarathroy1502/tenant-mgmt:latest
+    image: devplazaadmin/tenant-mgmt:latest
     container_name: tenant-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=tenant_mgmt_db
@@ -33,7 +33,7 @@ services:
       - devplaza-network
 
   user-mgmt:
-    image: sarathroy1502/user-mgmt:latest
+    image: devplazaadmin/user-mgmt:latest
     container_name: user-mgmt
     environment:
       - DATABASE_URL=postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/postgres?schema=user_mgmt_db
@@ -43,7 +43,7 @@ services:
       - devplaza-network
 
   frontend:
-    image: sarathroy1502/devplazafrontend:latest
+    image: devplazaadmin/devplazafrontend:latest
     container_name: devplaza-customer
     ports:
       - "5173:5173"
